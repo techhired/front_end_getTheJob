@@ -1,31 +1,13 @@
-import uuid from 'uuid/v1';
 import superagent from "superagent";
 
 // import fetch from "cross-fetch";
 
-export const createJob = (title , location, summary, date = new Date(), url) => {
+export const createJob = (source) => {
     return {
-
         type: 'JOB_SEARCH',
-        payload: {
-            id: uuid(),
-            title,
-            location,
-            summary,
-            date,
-            url
-        }
+        payload: source
     }
 };
-
-
-export const createJob2 = (source) => {
-    return {
-        type: 'JOB_SEARCH',
-        payload: [source]
-    }
-}
-
 
 export const updateJob = (job) => {
     return {
@@ -48,10 +30,9 @@ export const loadJobSearch = (language, location) => store => {// add parameter 
         // .set('User-Agent', 'anthony.triplett1989@gmail.com')
         .set('Authorization-Key', 'CCdZnBDDxYXTDFmtDy61nJVi8yvC3QNhYFOIx72w9EE=')
         .then(response => {
-            let mainRequest = response.body.SearchResult.SearchResultItems[0].MatchedObjectDescriptor;
-            console.log(mainRequest);
+            let mainRequest = response.body.SearchResult.SearchResultItems;
 
-            return store.dispatch(createJob(mainRequest.PositionTitle, mainRequest.PositionLocationDisplay, mainRequest.QualificationSummary, mainRequest.PublicationStartDate, mainRequest.PositionURI))
+            return mainRequest.forEach(current => store.dispatch(createJob(current)))// mainRequest is an array with objects with data, that's why we use map to dispatch each object to store
         })
         .catch(console.log);
 };
