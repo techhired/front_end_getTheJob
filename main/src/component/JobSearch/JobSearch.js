@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 //import JobSearchList from '../JobSearchList/JobSearchList';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
+import * as authAuctions from '../../action/auth-actions'
 import uuid from 'uuid';
 
 
@@ -10,22 +11,27 @@ export class JobSearch extends React.Component {
 
     handleJobRender = job => {
         return this.props.mappedJobCreates(job.title, job.location);
+    };
+
+    handleLogout = () => {
+        return this.props.logOut();
     }
 
     render() {
         console.log(this.props.jobSearch)
         return (
             <div>
+                <button onClick={this.handleLogout}> Sign Out </button>
                 <ul>
                     <JobSearchForm onComplete={this.handleJobRender}/>
                     { this.props.jobSearch.map(current =>
                        <li key={uuid()}>
-                           <p>Organization: {current.MatchedObjectDescriptor.OrganizationName}</p><br/>
+                           <p style={{ fontWeight: 'bold' }}>Organization: {current.MatchedObjectDescriptor.OrganizationName}</p><br/>
                            <p>{current.MatchedObjectDescriptor.PositionTitle}</p><br/>
                            <p>{current.MatchedObjectDescriptor.PositionLocationDisplay}</p><br/>
                            <p>{current.MatchedObjectDescriptor.UserArea.Details.JobSummary}</p><br/>
                            <p>{current.MatchedObjectDescriptor.PublicationStartDate}</p><br/>
-                           <p>{current.MatchedObjectDescriptor.PositionURI}</p><br/>
+                       <br/><a href={current.MatchedObjectDescriptor.PositionURI}>{current.MatchedObjectDescriptor.PositionURI}</a><br/>
                        </li>
                     )
                     }
@@ -38,13 +44,17 @@ export class JobSearch extends React.Component {
 const mapStateToProps = state => {
     return {
         jobSearch: state.jobSearch,
+        authAction: state.token
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         mappedJobCreates: (language, location) => {
-            dispatch(JobSearchActions.loadJobSearch(language, location))
+            dispatch(JobSearchActions.loadJobSearch(language, location));
+        },
+        logOut: () => {
+            dispatch(authAuctions.remove());
         }
     }
 
