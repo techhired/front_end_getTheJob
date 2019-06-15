@@ -13,6 +13,7 @@ const API_URL = 'http://localhost:8000/';
 const SIGNUP_ROUTE = 'signup';
 const SIGNIN_ROUTE = 'signin';
 
+
 export const signupRequest = user => store => {
   return superagent.post(`${API_URL}${SIGNUP_ROUTE}`)
     .send(user)

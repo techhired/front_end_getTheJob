@@ -1,7 +1,7 @@
 import uuid from 'uuid/v1';
 import superagent from "superagent";
 
-import fetch from "cross-fetch";
+// import fetch from "cross-fetch";
 
 export const createJob = (jobTitle , location, summary, date = new Date(), url) => {
     return {

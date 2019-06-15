@@ -3,19 +3,27 @@ import { connect } from 'react-redux';
 //import JobSearchList from '../JobSearchList/JobSearchList';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
+import * as authActions from '../../action/auth-actions';
+
 
 
 export class JobSearch extends React.Component {
 
     handleJobRender = job => {
         return this.props.mappedJobCreates(job.title, job.location);
-    }
+
+    };
+
+    handleLogOut = () => {
+        return this.props.logOut();
+    };
 
     render() {
         return (
             <div>
                 <ul>
                     <JobSearchForm onComplete={this.handleJobRender}/>
+                    <button onClick={this.handleLogOut}>Sign Out</button>
                     {/*{ this.props.jobSearch.map(current =>*/}
                        {/*<li>*/}
                            {/*{current.title}*/}
@@ -43,7 +51,11 @@ const mapDispatchToProps = dispatch => {
     return {
         mappedJobCreates: (language, location) => {
             dispatch(JobSearchActions.loadJobSearch(language, location))
+        },
+        logOut: () => {
+            dispatch(authActions.remove())
         }
+
     }
 
     };
