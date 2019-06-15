@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 //import JobSearchList from '../JobSearchList/JobSearchList';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
+import uuid from 'uuid';
 
 
 export class JobSearch extends React.Component {
@@ -12,23 +13,23 @@ export class JobSearch extends React.Component {
     }
 
     render() {
-        console.log(this.props)
+        console.log(this.props.jobSearch)
         return (
             <div>
                 <ul>
                     <JobSearchForm onComplete={this.handleJobRender}/>
                     { this.props.jobSearch.map(current =>
-                       <li>
-                           <p>{current.title}</p><br/>
-                           <p>{current.location}</p><br/>
-                           <p>{current.summary}</p><br/>
-                           <p>{current.date}</p><br/>
-                           <p>{current.url}</p>
+                       <li key={uuid()}>
+                           <p>Organization: {current.MatchedObjectDescriptor.OrganizationName}</p><br/>
+                           <p>{current.MatchedObjectDescriptor.PositionTitle}</p><br/>
+                           <p>{current.MatchedObjectDescriptor.PositionLocationDisplay}</p><br/>
+                           <p>{current.MatchedObjectDescriptor.UserArea.Details.JobSummary}</p><br/>
+                           <p>{current.MatchedObjectDescriptor.PublicationStartDate}</p><br/>
+                           <p>{current.MatchedObjectDescriptor.PositionURI}</p><br/>
                        </li>
                     )
                     }
                 </ul>
-
             </div>
         )
     }
