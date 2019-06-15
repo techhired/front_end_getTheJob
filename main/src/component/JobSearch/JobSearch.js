@@ -12,20 +12,21 @@ export class JobSearch extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div>
                 <ul>
                     <JobSearchForm onComplete={this.handleJobRender}/>
-                    {/*{ this.props.jobSearch.map(current =>*/}
-                       {/*<li>*/}
-                           {/*{current.title}*/}
-                           {/*{current.location}*/}
-                           {/*{current.description}*/}
-                           {/*{current.created_at}*/}
-                           {/*{current.url}*/}
-                       {/*</li>*/}
-                    {/*)*/}
-                    {/*}*/}
+                    { this.props.jobSearch.map(current =>
+                       <li>
+                           <p>{current.title}</p><br/>
+                           <p>{current.location}</p><br/>
+                           <p>{current.summary}</p><br/>
+                           <p>{current.date}</p><br/>
+                           <p>{current.url}</p>
+                       </li>
+                    )
+                    }
                 </ul>
 
             </div>
