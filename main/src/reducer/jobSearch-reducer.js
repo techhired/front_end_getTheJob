@@ -1,4 +1,5 @@
-export default ( state=[], {type, payload}) => {
+
+export default ( state = [], {type, payload}) => {
 
     switch(type) {
         case 'JOB_SEARCH':

@@ -3,22 +3,24 @@ import { connect } from 'react-redux';
 //import JobSearchList from '../JobSearchList/JobSearchList';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
-import * as authAuctions from '../../action/auth-actions'
+import * as authAuctions from '../../action/auth-actions';
 import uuid from 'uuid';
 
-
+let title, location;
 export class JobSearch extends React.Component {
 
     handleJobRender = job => {
-        return this.props.mappedJobCreates(job.title, job.location);
+        if(title != job.title || location != job.location) {
+            return this.props.mappedJobCreates(job.title, job.location), title = job.title, location = job.location;
+        }
+        return null;
     };
 
     handleLogout = () => {
         return this.props.logOut();
-    }
+    };
 
     render() {
-        console.log(this.props.jobSearch)
         return (
             <div>
                 <button onClick={this.handleLogout}> Sign Out </button>
@@ -51,14 +53,15 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         mappedJobCreates: (language, location) => {
+            console.log(language)
             dispatch(JobSearchActions.loadJobSearch(language, location));
         },
         logOut: () => {
             dispatch(authAuctions.remove());
-        }
+        },
     }
 
-    };
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobSearch);
