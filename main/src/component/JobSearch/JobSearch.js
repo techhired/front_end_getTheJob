@@ -6,14 +6,10 @@ import * as JobSearchActions from '../../action/jobSearch-actions';
 import * as authAuctions from '../../action/auth-actions';
 import uuid from 'uuid';
 
-let title, location;
 export class JobSearch extends React.Component {
 
     handleJobRender = job => {
-        if(title != job.title || location != job.location) {
-            return this.props.mappedJobCreates(job.title, job.location), title = job.title, location = job.location;
-        }
-        return null;
+            return this.props.mappedJobCreates(job.title, job.location);
     };
 
     handleLogout = () => {
@@ -53,7 +49,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         mappedJobCreates: (language, location) => {
-            console.log(language)
             dispatch(JobSearchActions.loadJobSearch(language, location));
         },
         logOut: () => {

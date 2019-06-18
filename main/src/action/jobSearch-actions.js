@@ -29,7 +29,7 @@ export const loadJobSearch = (language, location) => store => {// add parameter 
     const JOB_API = `https://data.usajobs.gov/api/Search?Keyword=${language}&LocationName=${location}`;
 
     return superagent.get(JOB_API)
-        // .set('User-Agent', 'anthony.triplett1989@gmail.com')
+
         .set('Authorization-Key', 'CCdZnBDDxYXTDFmtDy61nJVi8yvC3QNhYFOIx72w9EE=')
         .then(response => {
             let mainRequest = response.body.SearchResult.SearchResultItems;
