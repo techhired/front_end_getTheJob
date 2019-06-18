@@ -14,7 +14,6 @@ class AuthRedirect extends Component {
     } else if(!token) {
       destinationRoute= '/';
     }
-    console.log(destinationRoute);
     return(
       <div>
       {destinationRoute ? <Redirect to={destinationRoute}/> : undefined}

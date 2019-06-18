@@ -77,8 +77,8 @@ export class AuthForm extends Component {
             color='primary'
             type='submit'
           >{type}</Button>
-        </Grid>
-      </Grid>
+         </Grid>
+       </Grid>
     );
   }
 }
