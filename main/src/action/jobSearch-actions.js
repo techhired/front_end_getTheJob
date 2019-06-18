@@ -9,7 +9,6 @@ export const createJob = (source) => {
     }
 };
 
-
 // export const updateJob = (job) => {
 //     return {
 //         type: 'JOB_UPDATE',

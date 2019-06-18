@@ -9,7 +9,10 @@ import uuid from 'uuid';
 export class JobSearch extends React.Component {
 
     handleJobRender = job => {
+        if(job.title && job.location) {// validate if both inputs are filled
             return this.props.mappedJobCreates(job.title, job.location);
+        }
+        return false;
     };
 
     handleLogout = () => {
