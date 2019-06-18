@@ -9,6 +9,8 @@ import uuid from 'uuid';
 
 export class JobSearch extends React.Component {
 
+
+
     handleJobRender = job => {
         if(job.title && job.location) {// validate if both inputs are filled
             return this.props.mappedJobCreates(job.title, job.location);
@@ -21,6 +23,7 @@ export class JobSearch extends React.Component {
     };
 
     render() {
+
         return (
             <div>
                 <button onClick={this.handleLogout}> Sign Out </button>
@@ -31,12 +34,12 @@ export class JobSearch extends React.Component {
                     <JobSearchForm onComplete={this.handleJobRender}/>
                     { this.props.jobSearch.map(current =>
                        <li key={uuid()}>
-                           <p style={{ fontWeight: 'bold' }}>Organization: {current.MatchedObjectDescriptor.OrganizationName}</p><br/>
-                           <p>{current.MatchedObjectDescriptor.PositionTitle}</p><br/>
-                           <p>{current.MatchedObjectDescriptor.PositionLocationDisplay}</p><br/>
-                           <p>{current.MatchedObjectDescriptor.UserArea.Details.JobSummary}</p><br/>
-                           <p>{current.MatchedObjectDescriptor.PublicationStartDate}</p><br/>
-                       <br/><a href={current.MatchedObjectDescriptor.PositionURI}>{current.MatchedObjectDescriptor.PositionURI}</a><br/>
+                           <p style={{ fontWeight: 'bold' }}>Organization: {current.organization}</p><br/>
+                           <p>{current.title}</p><br/>
+                           <p>{current.location}</p><br/>
+                           <p>{current.summary}</p><br/>
+                           <p>{current.created}</p><br/>
+                       <br/><a href={current.url}>{current.url}</a><br/>
                        </li>
                     )
                     }
