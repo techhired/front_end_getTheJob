@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-
+let initialState = {title: '', location: ''}
 export default class JobSearchForm extends Component {
     constructor(props){
         super(props);
@@ -18,7 +18,9 @@ export default class JobSearchForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.onComplete(this.state);
+        this.setState(initialState);
     };
+
 
     render() {
         return(
