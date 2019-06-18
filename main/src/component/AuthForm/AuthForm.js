@@ -44,7 +44,7 @@ export class AuthForm extends Component {
     return(
       <Grid container={true} direction='column' justify='center' alignItems='center' spacing={1} >
         <Grid item >
-          <FormControl className={useStyles.margin} onSubmit={this.handleSubmit} >
+          <FormControl className={useStyles.margin} required='true' onSubmit={this.handleSubmit} >
             <TextField
               className={useStyles.textField}
               variant='filled'
@@ -58,7 +58,7 @@ export class AuthForm extends Component {
           </FormControl>
         </Grid>
         <Grid item >
-          <FormControl className={useStyles.margin} onSubmit={this.handleSubmit} >
+          <FormControl className={useStyles.margin} required='true' onSubmit={this.handleSubmit} >
             <TextField
               className={useStyles.textField}
               variant='filled'
