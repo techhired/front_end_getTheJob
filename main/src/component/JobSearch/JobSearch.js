@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 //import JobSearchList from '../JobSearchList/JobSearchList';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
@@ -15,13 +16,17 @@ export class JobSearch extends React.Component {
 
     handleLogout = () => {
         return this.props.logOut();
-    }
+    };
+
 
     render() {
         console.log(this.props.jobSearch)
         return (
             <div>
                 <button onClick={this.handleLogout}> Sign Out </button>
+                <li>
+                    <Link to="/myjobs"> My Jobs </Link>
+                </li>
                 <ul>
                     <JobSearchForm onComplete={this.handleJobRender}/>
                     { this.props.jobSearch.map(current =>
