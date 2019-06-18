@@ -4,25 +4,25 @@ import {BrowserRouter as Router, Link} from 'react-router-dom';
 //import JobSearchList from '../JobSearchList/JobSearchList';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
-import * as authAuctions from '../../action/auth-actions'
+import * as authAuctions from '../../action/auth-actions';
 import uuid from 'uuid';
-
 
 export class JobSearch extends React.Component {
 
 
 
     handleJobRender = job => {
-        return this.props.mappedJobCreates(job.title, job.location);
+        if(job.title && job.location) {// validate if both inputs are filled
+            return this.props.mappedJobCreates(job.title, job.location);
+        }
+        return false;
     };
 
     handleLogout = () => {
         return this.props.logOut();
     };
 
-
     render() {
-        console.log(this.props.jobSearch)
 
         return (
             <div>
@@ -63,10 +63,10 @@ const mapDispatchToProps = dispatch => {
         },
         logOut: () => {
             dispatch(authAuctions.remove());
-        }
+        },
     }
 
-    };
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobSearch);
