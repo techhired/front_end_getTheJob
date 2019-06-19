@@ -21,7 +21,6 @@ export default class JobSearchForm extends Component {
         this.setState(initialState);
     };
 
-
     render() {
         return(
             <form onSubmit={this.handleSubmit}>

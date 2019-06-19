@@ -1,6 +1,6 @@
 import React from 'react';
-import JobSearch from '../JobSearch/JobSearch';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+// import JobSearch from '../JobSearch/JobSearch';
+import { Link} from 'react-router-dom';
 
 
 export default class JobsSaved extends React.Component {
