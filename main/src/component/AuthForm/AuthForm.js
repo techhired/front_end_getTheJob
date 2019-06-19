@@ -39,7 +39,7 @@ export class AuthForm extends Component {
       type = type === 'signin' ? 'signin' : 'signup';
 
     return(
-
+      
       <form onSubmit={this.handleSubmit}>
         <input
           name='username'
