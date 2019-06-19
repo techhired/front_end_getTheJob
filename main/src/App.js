@@ -4,13 +4,14 @@ import AuthRedirect from './component/AuthRedirect/AuthRedirect';
 import Landing from './component/Landing/Landing';
 import JobSearch from '../src/component/JobSearch/JobSearch';
 import JobsSaved from '../src/component/JobsSaved/JobsSaved';
+import NavBar from '../src/component/NavBar/NavBar';
 
 export default class App extends Component {
   render() {
     return (
       <main>
       <BrowserRouter>
-        <h1>JobberWocky</h1>
+        <NavBar/>
         <Route path='*' component={AuthRedirect}/>
         <Route exact path="/" component={Landing}/>
         <Route exact path="/user" component={JobSearch}/>
