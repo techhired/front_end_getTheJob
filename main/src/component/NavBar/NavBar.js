@@ -7,8 +7,8 @@ const NavBar = () => {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="title" color="inherit">
-            Jobberwocky - Tech Job Search App
+          <Typography variant="h4" color="inherit">
+            JOBBERWOCKY - A Job Search App
           </Typography>
         </Toolbar>
       </AppBar>
