@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import './JobSearchForm.scss';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
 
 let initialState = {title: '', location: ''}
 export default class JobSearchForm extends Component {
@@ -21,7 +26,6 @@ export default class JobSearchForm extends Component {
         this.setState(initialState);
     };
 
-
     render() {
         return(
             <form onSubmit={this.handleSubmit}>
@@ -39,7 +43,7 @@ export default class JobSearchForm extends Component {
                     onChange={this.handleChange}
                     placeholder='zip code'
                 />
-                <button type='submit'>Search</button>
+                <Button variant='contained' color='primary' type='submit'>Search</Button>
             </form>
         )
     }
