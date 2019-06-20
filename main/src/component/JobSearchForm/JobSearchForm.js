@@ -27,7 +27,6 @@ export default class JobSearchForm extends Component {
         this.setState(initialState);
     };
 
-
     render() {
         return(
           <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center' spacing={0} >
