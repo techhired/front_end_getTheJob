@@ -3,6 +3,7 @@ import './JobSearchForm.scss';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid'
 
 
 let initialState = {title: '', location: ''}
@@ -29,6 +30,7 @@ export default class JobSearchForm extends Component {
 
     render() {
         return(
+          <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center' spacing={0} >
             <form onSubmit={this.handleSubmit}>
                 <input
                     type='text'
@@ -46,6 +48,7 @@ export default class JobSearchForm extends Component {
                 />
                 <Button variant='contained' color='primary' type='submit'>Search</Button>
             </form>
+          </Grid>
         )
     }
 }

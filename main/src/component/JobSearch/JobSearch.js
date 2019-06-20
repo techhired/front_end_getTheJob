@@ -11,6 +11,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper';
 import uuid from 'uuid';
 
 export class JobSearch extends React.Component {
@@ -32,7 +34,7 @@ export class JobSearch extends React.Component {
 
         return (
             <div>
-                <Button variant='contained' color='secondary' onClick={this.handleLogout}> Sign Out </Button>
+                <Button variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
                 <Typography>
                 <li>
                     <Link component={RouterLink} to="/myjobs"> My Jobs </Link>
@@ -40,17 +42,20 @@ export class JobSearch extends React.Component {
                 </Typography>
                 <ul>
                     <JobSearchForm onComplete={this.handleJobRender}/>
-                    { this.props.jobSearch.map(current =>
+                    <Grid container spacing={24} style={{padding:24}}>
+                    { this.props.jobSearch.map(current => ( <Grid item xs={6} sm={6} lg={4} xl={3}>
                        <li key={uuid()}>
-                           <p style={{ fontWeight: 'bold' }}>Organization: {current.organization}</p><br/>
+                           <p style={{ fontWeight: 'bold', backgroundColor: 'yellow'}}>Organization: {current.organization}</p><br/>
                            <p>{current.title}</p><br/>
                            <p>{current.location}</p><br/>
                            <p>{current.summary}</p><br/>
                            <p>{current.created}</p><br/>
                        <br/><a href={current.url}>{current.url}</a><br/>
                        </li>
-                    )
+                      </Grid>
+                    ))
                     }
+                    </Grid>
                 </ul>
             </div>
         )
