@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link as RouterLink} from 'react-router-dom';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
 import * as authAuctions from '../../action/auth-actions';
