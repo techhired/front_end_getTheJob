@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {BrowserRouter as Router} from 'react-router-dom';
-import { Link as RouterLink } from 'react-router-dom';
-//import JobSearchList from '../JobSearchList/JobSearchList';
+import {Link} from 'react-router-dom';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
 import * as authAuctions from '../../action/auth-actions';
@@ -12,13 +10,12 @@ import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import uuid from 'uuid';
+import superagent from "superagent";
 
 export class JobSearch extends React.Component {
 
-
-
     handleJobRender = job => {
-        if(job.title && job.location) {// validate if both inputs are filled
+        if(job.title && job.location) {
             return this.props.mappedJobCreates(job.title, job.location);
         }
         return false;
@@ -28,8 +25,13 @@ export class JobSearch extends React.Component {
         return this.props.logOut();
     };
 
-    render() {
+    addJob = (profile) => {
+        return superagent.post('http://localhost:8000/save')
+          .send(profile)
+    };
 
+    render() {
+        console.log(this.props.jobSearch);
         return (
             <div>
                 <Button variant='contained' color='secondary' onClick={this.handleLogout}> Sign Out </Button>
@@ -48,6 +50,7 @@ export class JobSearch extends React.Component {
                            <p>{current.summary}</p><br/>
                            <p>{current.created}</p><br/>
                        <br/><a href={current.url}>{current.url}</a><br/>
+                       <button onClick={this.addJob.bind(null, current)}>Add Job</button>
                        </li>
                     )
                     }
