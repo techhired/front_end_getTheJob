@@ -30,6 +30,7 @@ export class JobSearch extends React.Component {
     addJob = (profile) => {
         return superagent.post('http://localhost:8000/save')
           .send(profile)
+            .then(res => console.log(res))
     };
 
     renderProfile = (username) => {
@@ -37,7 +38,6 @@ export class JobSearch extends React.Component {
     };
 
     render() {
-        console.log(this.props.authAction);
         return (
             <div>
                 <Button variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
