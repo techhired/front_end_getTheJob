@@ -30,8 +30,12 @@ export class JobSearch extends React.Component {
           .send(profile)
     };
 
+    renderProfile = (username) => {
+      return super.get('http://localhost:8000/profile/')
+    };
+
     render() {
-        console.log(this.props.jobSearch);
+        console.log(this.props.authAction);
         return (
             <div>
                 <Button variant='contained' color='secondary' onClick={this.handleLogout}> Sign Out </Button>
