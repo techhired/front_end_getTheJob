@@ -13,6 +13,8 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper';
 import uuid from 'uuid';
 import superagent from "superagent";
+import {Card} from "@material-ui/core";
+import CardContent from '@material-ui/core/CardContent';
 
 export class JobSearch extends React.Component {
 
@@ -30,6 +32,7 @@ export class JobSearch extends React.Component {
     addJob = (profile) => {
         return superagent.post('http://localhost:8000/save')
           .send(profile)
+            .then(res => console.log(res))
     };
 
     renderProfile = (username) => {
@@ -37,7 +40,6 @@ export class JobSearch extends React.Component {
     };
 
     render() {
-        console.log(this.props.authAction);
         return (
             <div>
                 <Button variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
@@ -50,6 +52,8 @@ export class JobSearch extends React.Component {
                     <JobSearchForm onComplete={this.handleJobRender}/>
                     <Grid container spacing={24} style={{padding:24}}>
                     { this.props.jobSearch.map(current => ( <Grid item xs={6} sm={6} lg={4} xl={3}>
+                          <Card>
+                              <CardContent>
                        <li key={uuid()}>
                            <p style={{ fontWeight: 'bold', backgroundColor: 'yellow'}}>Organization: {current.organization}</p><br/>
                            <p>{current.title}</p><br/>
@@ -57,8 +61,10 @@ export class JobSearch extends React.Component {
                            <p>{current.summary}</p><br/>
                            <p>{current.created}</p><br/>
                        <br/><a href={current.url}>{current.url}</a><br/>
-                       <button onClick={this.addJob.bind(null, current)}>Add Job</button>
+                       <Button variant='contained' color='default' onClick={this.addJob.bind(null, current)}>Add Job</Button>
                        </li>
+                              </CardContent>
+                          </Card>
                       </Grid>
                     ))
                     }
