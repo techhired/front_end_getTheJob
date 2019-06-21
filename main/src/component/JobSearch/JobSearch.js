@@ -15,6 +15,7 @@ import uuid from 'uuid';
 import superagent from "superagent";
 import {Card} from "@material-ui/core";
 import CardContent from '@material-ui/core/CardContent';
+import body from './JobSearch.scss';
 
 export class JobSearch extends React.Component {
 
@@ -41,7 +42,7 @@ export class JobSearch extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{backgroundColor:'darkgray', minHeight: '100vh'}}>
                 <Button variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
                 <Typography>
                 <li>
@@ -52,9 +53,9 @@ export class JobSearch extends React.Component {
                     <JobSearchForm onComplete={this.handleJobRender}/>
                     <Grid container spacing={24} style={{padding:24}}>
                     { this.props.jobSearch.map(current => ( <Grid item xs={6} sm={6} lg={4} xl={3}>
-                          <Card>
-                              <CardContent>
-                       <li key={uuid()}>
+                        <Card>
+                            <CardContent>
+                       <li style={{backgroundColor: '#f5f5f5'}} key={uuid()}>
                            <p style={{ fontWeight: 'bold', backgroundColor: 'yellow'}}>Organization: {current.organization}</p><br/>
                            <p>{current.title}</p><br/>
                            <p>{current.location}</p><br/>
@@ -63,14 +64,16 @@ export class JobSearch extends React.Component {
                        <br/><a href={current.url}>{current.url}</a><br/>
                        <Button variant='contained' color='default' onClick={this.addJob.bind(null, current)}>Add Job</Button>
                        </li>
-                              </CardContent>
-                          </Card>
+                            </CardContent>
+                        </Card>
+
                       </Grid>
                     ))
                     }
                     </Grid>
                 </ul>
             </div>
+
         )
     }
 }

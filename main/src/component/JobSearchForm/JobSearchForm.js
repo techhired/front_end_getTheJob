@@ -30,7 +30,7 @@ export default class JobSearchForm extends Component {
     render() {
         return(
           <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center' spacing={0} >
-            <form onSubmit={this.handleSubmit}>
+            <form style={{backgroundColor:'darkgray', height: '100%'}} onSubmit={this.handleSubmit}>
                 <input
                     type='text'
                     name='title'
