@@ -1,7 +1,4 @@
-#sign-in-paper {
-    max-width: 300px;
-}
-
-#sign-up-paper {
-    max-width: 300px;
+Landing {
+    background-color: red;
+    background-image: url("../../styles/background.jpg");
 }
