@@ -14,13 +14,13 @@ export default class App extends Component {
       <main id='main'>
         <BrowserRouter>
           <NavBar/>
-          <Grid container={true} direction='column' justify='center' alignContent='center'>
+
             <Route path='*' component={AuthRedirect}/>
             <Route exact path="/" component={Landing}/>
             <Route exact path="/user" component={JobSearch}/>
             <Route exact path="/signup" component={Landing}/>
             <Route exact path="/myjobs" component={JobsSaved}/>
-          </Grid>
+
         </BrowserRouter>
     </main>
   );
