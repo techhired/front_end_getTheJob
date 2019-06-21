@@ -1,8 +1,8 @@
 import superagent from 'superagent';
 
-export const set = token => ({
+export const set = (token, username) => ({
   type: 'TOKEN_SET',
-  payload: token,
+  payload: {token, username}
 });
 
 export const remove = () => ({
@@ -17,7 +17,7 @@ export const signupRequest = user => store => {
   return superagent.post(`${API_URL}${SIGNUP_ROUTE}`)
     .send(user)
     .then(response => {
-    return store.dispatch(set(response.text));
+    return store.dispatch(set(response.text, user.username));
 }).catch(console.log);
 };
 
@@ -25,6 +25,6 @@ export const signinRequest = (username, password) => store => {
   return superagent.post(`${API_URL}${SIGNIN_ROUTE}`)
     .auth(username, password)
     .then(response => {
-    return store.dispatch(set(response.text));
+    return store.dispatch(set(response.text, username));
 }).catch(console.log);
 };

@@ -15,6 +15,8 @@ import uuid from 'uuid';
 import superagent from "superagent";
 import {Card} from "@material-ui/core";
 import CardContent from '@material-ui/core/CardContent';
+import store from '../../index';
+import auth from '../../action/auth-actions';
 import body from './JobSearch.scss';
 
 export class JobSearch extends React.Component {
@@ -31,7 +33,7 @@ export class JobSearch extends React.Component {
     };
 
     addJob = (profile) => {
-        return superagent.post('http://localhost:8000/save')
+        return superagent.post(`http://localhost:8000/save/${this.props.authAction.username}`)
           .send(profile)
             .then(res => console.log(res))
     };
@@ -81,7 +83,7 @@ export class JobSearch extends React.Component {
 const mapStateToProps = state => {
     return {
         jobSearch: state.jobSearch,
-        authAction: state.token
+        authAction: state.token,
     }
 };
 

@@ -8,3 +8,5 @@ import createApplicationStore from './createstore/create-store';
 const store = createApplicationStore();
 
 ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
+
+export default store;
