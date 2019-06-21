@@ -2,7 +2,7 @@ import superagent from 'superagent';
 
 export const set = token => ({
   type: 'TOKEN_SET',
-  payload: token,
+  payload: token
 });
 
 export const remove = () => ({
@@ -17,6 +17,7 @@ export const signupRequest = user => store => {
   return superagent.post(`${API_URL}${SIGNUP_ROUTE}`)
     .send(user)
     .then(response => {
+      console.log(response.text)
     return store.dispatch(set(response.text));
 }).catch(console.log);
 };
