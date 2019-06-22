@@ -23,15 +23,15 @@
 - *`AuthRedirect`*: contains the logic to sign the user in or up
 - *`JobSearch`*: contains the ability to search for a job based on keyword and location
 - *`JobSearchForm`*: contains the logic to render job postings with title, location, summary and URL
-- *`JobsSaved`*: contains the saved jobt he user selects
+- *`JobsSaved`*: contains the saved job the user selects
 - *`Landing`*: front page of the app.  Contains the ability to sign in or up.
 - *`NavBar`*: Material-UI Nav bar
 - *`thunk-middleware`*: contains our front end middleware
 
-#### 
-##### Exported Values and Methods
-###### `handleJobRender`: renders a mapped object of jobs
 
+
+#### Exported Values and Methods
+###### `handleJobRender`: renders a mapped object of jobs
 ###### `handleLogOut` : logs user out
 
 
@@ -39,15 +39,18 @@
 * To run tests, please use the `npm run test` command.
 * Tests cover the following:
   ##### Routes
-  * `` should return 200 status
-  * `` should return 200 status
-  * `` should return 200 status
-  * `` should return 200 status
+  * `/user` should return 200 status
+  * `/signup` should return 200 status
+  * `/signin` should return 200 status
+  * `/myjob` should return 200 status
   
-  ##### Modules / Functionality
+ #### Modules / Functionality
+ ###### `Landing`: renders the signin and signup cards
+ ###### `AuthForm`: the form for signin and signup 
+ ###### `JobSearch`: the search form and renderer for the job api data
+ ###### `JobSearchForm`: the form for looking up jobs from the job api
  
-  
-  ##### MongoDB
+ ##### MongoDB
   * Tests `POST`
   * Tests `GET`
 
