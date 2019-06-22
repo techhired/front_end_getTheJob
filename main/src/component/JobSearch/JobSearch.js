@@ -45,7 +45,7 @@ export class JobSearch extends React.Component {
     render() {
         return (
             <div style={{backgroundColor:'darkgray', minHeight: '100vh'}}>
-                <Button variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
+                <Button id='logOut' variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
                 <Typography>
                 <li>
                     <Link component={RouterLink} to="/myjobs"> My Jobs </Link>
