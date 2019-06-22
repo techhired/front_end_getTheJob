@@ -33,9 +33,8 @@ export class JobSearch extends React.Component {
     };
 
     addJob = (profile) => {
-        console.log(store.getState().token)
         return superagent.post(`http://localhost:8000/save/${this.props.authAction.username}`)
-            .auth(store.getState().token.username, store.getState().token.password)
+            // .auth(store.getState().token.username, store.getState().token.password)
           .send(profile)
     };
 
