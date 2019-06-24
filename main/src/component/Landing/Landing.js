@@ -57,7 +57,6 @@ render() {
     </Grid>
   ;
 
-
   const signUp =
     <Grid container={true} direction='column' justify='center' alignItems='center' spacing={0} >
       <div style={{backgroundImage: `url(${BackgroundImage})`, height: '100vh', width: '100vw', alignItems: 'center'}}>

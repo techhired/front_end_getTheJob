@@ -4,9 +4,7 @@ import AuthRedirect from './component/AuthRedirect/AuthRedirect';
 import Landing from './component/Landing/Landing';
 import JobSearch from '../src/component/JobSearch/JobSearch';
 import JobsSaved from '../src/component/JobsSaved/JobsSaved';
-// import './app.css'
 import NavBar from '../src/component/NavBar/NavBar';
-import Grid from '@material-ui/core/Grid';
 
 export default class App extends Component {
   render() {
