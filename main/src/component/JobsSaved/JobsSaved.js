@@ -1,11 +1,9 @@
-import React from 'react';
-import JobSearch from '../JobSearch/JobSearch';
-import {BrowserRouter as Router} from 'react-router-dom';
+import React, { Component } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 
-export default class JobsSaved extends React.Component {
+export default class JobsSaved extends Component {
 
   render() {
     return (

@@ -5,17 +5,14 @@ import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
 import * as authAuctions from '../../action/auth-actions';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper';
 import uuid from 'uuid';
 import superagent from "superagent";
 import {Card} from "@material-ui/core";
 import CardContent from '@material-ui/core/CardContent';
-import store from '../../index';
+import store from '../../../index';
 import auth from '../../action/auth-actions';
 import body from './JobSearch.scss';
 
@@ -34,7 +31,6 @@ export class JobSearch extends React.Component {
 
     addJob = (profile) => {
         return superagent.post(`http://localhost:8000/save/${this.props.authAction.username}`)
-            // .auth(store.getState().token.username, store.getState().token.password)
           .send(profile)
     };
 
@@ -98,6 +94,5 @@ const mapDispatchToProps = dispatch => {
     }
 
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobSearch);
